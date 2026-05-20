@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JASTEB PREMIUM BY ZAQQQ STUREE</title>
+<style>
+    * {margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif;}
+
+    body {
+        background:#0a0e1a;
+        color:#fff;
+        padding:20px;
+        min-height:100vh;
+        border:4px solid transparent;
+        animation: rgbBorder 4s linear infinite;
+    }
+
+    @keyframes rgbBorder {
+        0% {border-color: #ff0040; box-shadow: 0 0 20px #ff0040 inset, 0 0 20px #ff0040;}
+        25% {border-color: #00ff88; box-shadow: 0 0 20px #00ff88 inset, 0 0 20px #00ff88;}
+        50% {border-color: #00e5ff; box-shadow: 0 0 20px #00e5ff inset, 0 0 20px #00e5ff;}
+        75% {border-color: #a855f7; box-shadow: 0 0 20px #a855f7 inset, 0 0 20px #a855f7;}
+        100% {border-color: #ff0040; box-shadow: 0 0 20px #ff0040 inset, 0 0 20px #ff0040;}
+    }
+
+.container {max-width:450px;margin:0 auto;}
+    h1 {text-align:center;color:#00e5ff;font-size:20px;margin-bottom:25px;letter-spacing:1px;}
+.form-group {margin-bottom:20px;}
+label {display:flex;align-items:center;gap:8px;color:#00e5ff;font-size:14px;font-weight:600;margin-bottom:8px;}
+input, select {width:100%;padding:14px;background:#1a1f2e;border:2px solid #2a3142;border-radius:10px;color:#fff;font-size:14px;outline:none;}
+input:focus, select:focus {border-color:#00e5ff;}
+select {appearance:none;background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");background-position:right 12px center;background-repeat:no-repeat;background-size:16px;}
+.paket-box {background:#1a1f2e;border:2px solid #2a3142;padding:15px;border-radius:12px;margin-top:10px;display:none;}
+.paket-box.active {display:block;}
+.paket-section {margin-bottom:18px;}
+.paket-section h4 {color:#00e5ff;font-size:14px;margin-bottom:10px;text-align:center;}
+.paket-grid {display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.paket-item {background:#0a0e1a;border:2px solid #2a3142;border-radius:8px;padding:12px;cursor:pointer;transition:0.2s;}
+.paket-item input {display:none;}
+.paket-item:hover {border-color:#00e5ff;}
+.paket-item.selected {border-color:#00e5ff;background:#0f172a;}
+.paket-harga {color:#00e5ff;font-weight:700;font-size:15px;}
+.paket-detail {color:#9ca3af;font-size:13px;margin-top:4px;}
+.qris-box,.gopay-box {background:#fff;color:#000;padding:20px;border-radius:12px;text-align:center;margin-top:10px;display:none;}
+.qris-box.active,.gopay-box.active {display:block;}
+.qris-box h3,.gopay-box h3 {font-size:16px;margin-bottom:10px;color:#000;}
+.qris-box img {width:100%;max-width:280px;margin:15px auto;display:block;}
+.gopay-box p {font-size:15px;margin:8px 0;color:#000;}
+.gopay-box.nomor {font-size:20px;font-weight:700;color:#00aedb;letter-spacing:1px;}
+.file-upload {position:relative;}
+.file-upload input[type="file"] {display:none;}
+.file-upload label {display:block;padding:14px;background:#1a1f2e;border:2px solid #2a3142;border-radius:10px;cursor:pointer;color:#6b7280;font-weight:normal;}
+.note {font-size:12px;color:#9ca3af;margin-top:6px;}
+button {width:100%;padding:14px;background:#00e5ff;color:#0a0e1a;border:none;border-radius:10px;font-weight:700;font-size:16px;cursor:pointer;margin-top:20px;}
+button:hover {background:#00c8e0;}
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>JASTEB PREMIUM BY ZAQQQ STUREE</h1>
+
+    <audio id="bgMusic" loop>
+        <source src="https://files.catbox.moe/ajr89a.mp3" type="audio/mpeg">
+    </audio>
+
+    <form id="orderForm">
+        <div class="form-group">
+            <label>📧 EMAIL PEMBELI</label>
+            <input type="email" id="email" placeholder="zaqjasteb@gmail.com" required>
+        </div>
+
+        <div class="form-group">
+            <label>📋 PILIH LAYAN</label>
+            <select id="layanan" required>
+                <option value="">-- Pilih Paket --</option>
+                <option value="Jasteb">Jasteb</option>
+                <option value="Panel Jasteb">Panel Jasteb</option>
+            </select>
+        </div>
+
+        <div class="paket-box" id="paketBox">
+            <div id="paketContent"></div>
+        </div>
+
+        <div class="form-group">
+            <label>💳 METODE PEMBAYARAN</label>
+            <select id="metode" required>
+                <option value="">-- Pilih Metode --</option>
+                <option value="QRIS">QRIS</option>
+                <option value="GOPAY">GOPAY</option>
+            </select>
+        </div>
+
+        <div class="qris-box" id="qrisBox">
+            <h3>SCAN QRIS ISTI FARIDAH</h3>
+            <img src="https://i.imgur.com/vZt6yY8.png" alt="QRIS ISTI FARIDAH"
+                 style="width:100%;max-width:280px;margin:15px auto;display:block;border:3px solid #00e5ff;border-radius:12px;box-shadow:0 0 20px #00e5ff, 0 0 40px rgba(0,229,255,0.5);">
+            <p style="font-size:11px; color:#666;">Pastikan scan QRIS di atas saat checkout</p>
+        </div>
+
+        <div class="gopay-box" id="gopayBox">
+            <h3>BAYAR VIA GOPAY</h3>
+            <p>Kirim ke nomor:</p>
+            <p class="nomor">083131335698</p>
+            <p>Atas Nama: <strong>Rozaq</strong></p>
+            <p style="font-size:11px; color:#666;">Pastikan nama sesuai sebelum transfer</p>
+        </div>
+
+        <div class="form-group">
+            <label>📷 UPLOAD BUKTI TRANSFER</label>
+            <div class="file-upload">
+                <input type="file" id="bukti" accept="image/*" required>
+                <label for="bukti" id="file-label">Pilih File - Tidak ada file yang dipilih</label>
+            </div>
+            <p class="note">*Setelah klik Kirim, upload bukti manual ke chat WA ya</p>
+        </div>
+
+        <button type="submit">KIRIM PESAN KE WHATSAPP</button>
+    </form>
+</div>
+
+<script>
+    const bgMusic = document.getElementById('bgMusic');
+    let musicStarted = false;
+
+    document.addEventListener('click', function() {
+        if(!musicStarted) {
+            bgMusic.play().catch(()=>{});
+            musicStarted = true;
+        }
+    }, {once: true});
+
+    const paketJasteb = [
+        {harga:"1k", detail:"30 Unchek"}, {harga:"2k", detail:"40 Unchek"}, {harga:"3k", detail:"60 Unchek"},
+        {harga:"4k", detail:"80 Unchek"}, {harga:"5k", detail:"100 Unchek"}, {harga:"6k", detail:"120 Unchek"},
+        {harga:"7k", detail:"140 Unchek"}, {harga:"8k", detail:"160 Unchek"}, {harga:"9k", detail:"180 Unchek"},
+        {harga:"10k", detail:"200 Unchek"}, {harga:"15k", detail:"300 Unchek"}, {harga:"20k", detail:"400 Unchek"},
+        {harga:"25k", detail:"550 Unchek"}
+    ];
+
+    const paketJam = [
+        {harga:"1k", detail:"1 Jam"}, {harga:"2k", detail:"2 Jam"}, {harga:"3k", detail:"3 Jam"},
+        {harga:"4k", detail:"4 Jam"}, {harga:"5k", detail:"5 Jam"}, {harga:"6k", detail:"6 Jam"},
+        {harga:"7k", detail:"7 Jam"}, {harga:"8k", detail:"8 Jam"}, {harga:"9k", detail:"9 Jam"},
+        {harga:"10k", detail:"10 Jam"}, {harga:"11k", detail:"11 Jam"}, {harga:"12k", detail:"12 Jam"}
+    ];
+
+    const paketHarian = [
+        {harga:"15k", detail:"Masa Aktif 7 Hari"},
+        {harga:"30k", detail:"Masa Aktif 14 Hari"},
+        {harga:"45k", detail:"Masa Aktif 26 Hari"},
+        {harga:"50k", detail:"Masa Aktif 30 Hari"}
+    ];
+
+    const layananSelect = document.getElementById('layanan');
+    const paketBox = document.getElementById('paketBox');
+    const paketContent = document.getElementById('paketContent');
+    let selectedPaket = "";
+
+    function renderPaket(type) {
+        paketContent.innerHTML = '';
+        if(type === 'Jasteb') {
+            paketContent.innerHTML = '<label>💰 PILIH PAKET JASTEB</label>';
+            let html = '<div class="paket-section"><div class="paket-grid">';
+            paketJasteb.forEach(paket => {
+                html += `<label class="paket-item"><input type="radio" name="paket" value="${paket.harga} - ${paket.detail}">
+                    <div class="paket-harga">${paket.harga}</div>
+                    <div class="paket-detail">${paket.detail}</div></label>`;
+            });
+            html += '</div></div>';
+            paketContent.innerHTML += html;
+        }
+        if(type === 'Panel Jasteb') {
+            paketContent.innerHTML = '<label>⚡ PILIH PAKET PANEL JASTEB</label>';
+            let htmlJam = '<div class="paket-section"><h4>📋 SEWA PER JAM</h4><div class="paket-grid">';
+            paketJam.forEach(paket => {
+                htmlJam += `<label class="paket-item"><input type="radio" name="paket" value="${paket.harga} - ${paket.detail}">
+                    <div class="paket-harga">${paket.harga}</div>
+                    <div class="paket-detail">${paket.detail}</div></label>`;
+            });
+            htmlJam += '</div></div>';
+            let htmlHarian = '<div class="paket-section"><pre style="color:#00e5ff;font-size:13px;line-height:1.6;background:#0a0e1a;padding:12px;border-radius:8px;border:2px solid #2a3142;">─〔 🗓️ SEWA HARIAN 〕─╮\n';
+            paketHarian.forEach(paket => {
+                htmlHarian += `│ 🕒 ${paket.harga.toUpperCase()} → ${paket.detail}\n`;
+            });
+            htmlHarian += '╰────────────────╯</pre><div class="paket-grid">';
+            paketHarian.forEach(paket => {
+                htmlHarian += `<label class="paket-item"><input type="radio" name="paket" value="${paket.harga} - ${paket.detail}">
+                    <div class="paket-harga">${paket.harga}</div>
+                    <div class="paket-detail">${paket.detail}</div></label>`;
+            });
+            htmlHarian += '</div></div>';
+            paketContent.innerHTML += htmlJam + htmlHarian;
+        }
+        setupPaketClick();
+    }
+
+    function setupPaketClick() {
+        paketContent.addEventListener('click', function(e) {
+            const item = e.target.closest('.paket-item');
+            if(!item) return;
+            document.querySelectorAll('.paket-item').forEach(i => i.classList.remove('selected'));
+            item.classList.add('selected');
+            item.querySelector('input').checked = true;
+            selectedPaket = item.querySelector('input').value;
+        });
+    }
+
+    layananSelect.addEventListener('change', function(e) {
+        if(e.target.value === 'Jasteb' || e.target.value === 'Panel Jasteb') {
+            paketBox.classList.add('active');
+            renderPaket(e.target.value);
+            selectedPaket = "";
+        } else {
+            paketBox.classList.remove('active');
+            selectedPaket = "";
+        }
+    });
+
+    document.getElementById('metode').addEventListener('change', function(e) {
+        const qrisBox = document.getElementById('qrisBox');
+        const gopayBox = document.getElementById('gopayBox');
+        qrisBox.classList.remove('active');
+        gopayBox.classList.remove('active');
+        if(e.target.value === 'QRIS') qrisBox.classList.add('active');
+        else if(e.target.value === 'GOPAY') gopayBox.classList.add('active');
+    });
+
+    document.getElementById('bukti').addEventListener('change', function(e) {
+        const fileName = e.target.files[0]? e.target.files[0].name : 'Tidak ada file yang dipilih';
+        document.getElementById('file-label').textContent = 'Pilih File - ' + fileName;
+    });
+
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        if((layananSelect.value === 'Jasteb' || layananSelect.value === 'Panel Jasteb') &&!selectedPaket) {
+            alert('Pilih paket dulu!');
+            return;
+        }
+        const email = document.getElementById('email').value;
+        const layanan = document.getElementById('layanan').value;
+        const metode = document.getElementById('metode').value;
+        const fileName = document.getElementById('bukti').files[0]?.name || 'Belum upload';
+        const paketText = selectedPaket? `%0A💰 Paket: ${selectedPaket}` : '';
+        const pesan = `*JASTEB PREMIUM BY ZAQQQ STUREE*%0A%0A📧 Email: ${email}%0A📋 Layanan: ${layanan}${paketText}%0A💳 Metode: ${metode}%0A📷 Bukti: ${fileName}%0A%0A_Silakan cek bukti transfer yang saya kirim di chat ini_`;
+        const nomorWA = "6283131335698";
+        window.open(`https://wa.me/${nomorWA}?text=${pesan}`, '_blank');
+    });
+</script>
+</body>
+  </html>
